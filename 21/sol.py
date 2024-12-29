@@ -288,4 +288,7 @@ Function 'solveOptimised' executed in 0.0001 seconds
 176650
 Function 'solveOptimised' executed in 0.0841 seconds
 217698355426872
+
+
+Took an hint from Reddit : https://www.reddit.com/r/adventofcode/comments/1hlir56/comment/m3mh0hn initially to figure out that to rule out paths going through gap ( # ) in our case 
 """
