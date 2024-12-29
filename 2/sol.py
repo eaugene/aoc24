@@ -1,3 +1,4 @@
+from utils import timeit
 def read():
   # Initialize empty lists
     list1 = []
@@ -11,6 +12,7 @@ def read():
             list1.append(values)
     return list1
 
+@timeit
 def solve1(list1):
     ans = 0
     for i in list1:
@@ -36,7 +38,7 @@ def validateUtil(i):
         return True
     return False
 
-
+@timeit
 def solve2(list1):
     ans = 0
     for i in list1:
@@ -54,9 +56,7 @@ def solve2(list1):
 
 
 l1 = read()
-print("solving part 1 ")
 print(solve1(l1))
-print("solving part 2 ")
 print(solve2(l1))
 
 

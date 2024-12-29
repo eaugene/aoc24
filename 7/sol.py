@@ -1,4 +1,4 @@
-import time
+from utils import timeit
 FILE_NAME = 'inp.txt'
 
 
@@ -15,7 +15,7 @@ def read():
             inps.append([tot,vals])
     return inps
 
-
+@timeit
 def solve1(inps):
     ans = 0
     unsolved = []
@@ -37,7 +37,7 @@ def solve1(inps):
             unsolved.append(i)
     return ans,unsolved
 
-
+@timeit
 def solve2(inps):
     ans = 0
     def rec(idx,inp,tot,curr,countJoin):
@@ -56,12 +56,6 @@ def solve2(inps):
     return ans
 
 inps = read()
-st = time.time()
 res,unsolved = solve1(inps)
 print(res)
-print("time taken in seconds :" + str(time.time()-st))
-
-
-st = time.time()
 print(res+solve2(unsolved))
-print("time taken in seconds :" + str(time.time()-st))

@@ -1,4 +1,5 @@
 import re
+from utils import timeit
 
 pattern = r"mul\(\d{1,3},\d{1,3}\)"
 FILE = 'inp.txt'
@@ -12,7 +13,7 @@ def read():
                 val.append((int(i),int(j)))
     return val
 
-
+@timeit
 def solve1(mulList):
     ans = 0
     for i,j in mulList:
@@ -30,6 +31,7 @@ def read2():
             val.extend(matches)
     return val
 
+@timeit
 def solve2(list2):
     ans = 0
     enable = True
@@ -47,5 +49,4 @@ mulList = read()
 print(solve1(mulList))
 
 list2 = read2()
-print(list2)
 print(solve2(list2))

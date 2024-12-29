@@ -1,5 +1,7 @@
 from collections import defaultdict, deque
 
+from utils import timeit
+
 
 def read():
     # Initialize empty lists
@@ -55,7 +57,7 @@ def buildTopoSort(edges : [[int,int]]) -> [int]:
 
     return topo_order
 
-
+@timeit
 def solve1(edges : [[int]], queries : [[int]]):
     setRules = set()
     ans = 0
@@ -75,7 +77,7 @@ def solve1(edges : [[int]], queries : [[int]]):
             inCorrectQueries.append(q)
     return ans,inCorrectQueries
 
-
+@timeit
 def solve2(edges : [[int]],queries : [[int]]):
     setRules = set()
     for e in edges:

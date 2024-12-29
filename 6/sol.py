@@ -1,4 +1,4 @@
-import time
+from utils import timeit
 
 FILE='inp.txt'
 def read():
@@ -18,6 +18,7 @@ def read():
 set1 = set()
 set2 = set()
 
+@timeit
 def solve1(grid,GuardPos) :
     n = len(grid)
     m = len(grid[0])
@@ -70,6 +71,7 @@ def solve2Util(grid,GuardPos) :
         y += dirs[dir][1]
     return False
 
+@timeit
 def solve2Brute(grid,GuardPos):
     # this is a brute force way O(n^4) . Do in a optimised manner
     n = len(grid)
@@ -87,7 +89,7 @@ def solve2Brute(grid,GuardPos):
                 grid[i][j] = '.'
     return ans
 
-
+@timeit
 def solve2Optimised(grid,GuardPos):
     n = len(grid)
     m = len(grid[0])
@@ -189,16 +191,8 @@ def solve2Optimised(grid,GuardPos):
 
 grid,guaardPos = read()
 print(solve1(grid,guaardPos))
-
-print("solving part 2 - bruteforce : ")
-st = time.time()
 print(solve2Brute(grid,guaardPos))
-print("time taken in seconds :" + str(time.time()-st))
-
-print("solving part 2 - optimised : ")
-st = time.time()
 print(solve2Optimised(grid,guaardPos))
-print("time taken in seconds :" + str(time.time()-st))
 
 """
 

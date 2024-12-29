@@ -1,3 +1,5 @@
+from utils import timeit
+
 def read():
   # Initialize empty lists
     list1 = []
@@ -13,6 +15,7 @@ def read():
                 list2.append(int(values[1]))  # Add the second value to list2
     return list1,list2
 
+@timeit
 def solve1(list1,list2):
     list1.sort()
     list2.sort()
@@ -22,6 +25,7 @@ def solve1(list1,list2):
         ans += (abs(list1[i]-list2[i]))
     print(ans)
 
+@timeit
 def solve2(list1,list2):
     dct = {}
     for i in list2:
@@ -37,7 +41,5 @@ def solve2(list1,list2):
     print(ans)
 
 l1,l2 = read()
-print("solving part 1 ")
 solve1(l1,l2)
-print("solving part 2 ")
 solve2(l1,l2)
