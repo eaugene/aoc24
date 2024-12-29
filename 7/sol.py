@@ -40,18 +40,15 @@ def solve1(inps):
 @timeit
 def solve2(inps):
     ans = 0
-    def rec(idx,inp,tot,curr,countJoin):
-        n=len(inp)
+    def rec(idx,inp,tot,curr,n):
         if (curr == tot and idx==n):
             return True
-        if (curr > tot):
+        if (curr > tot or idx>=n):
             return False
-        if(idx>=n):
-            return False
-        return rec(idx+1,inp,tot,curr+inp[idx],countJoin) or rec(idx+1,inp,tot,curr*inp[idx],countJoin) or rec(idx+1,inp,tot,(curr*pow(10,len(str(inp[idx]))))+inp[idx],countJoin+1)
+        return rec(idx+1,inp,tot,curr+inp[idx],n) or rec(idx+1,inp,tot,curr*inp[idx],n) or rec(idx+1,inp,tot,int(str(curr)+str(inp[idx])),n)
 
     for i in inps:
-        if(rec(1,i[1],i[0],i[1][0],0)):
+        if(rec(1,i[1],i[0],i[1][0],len(i[1]))):
             ans+=i[0]
     return ans
 
