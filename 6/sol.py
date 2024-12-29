@@ -1,3 +1,5 @@
+import time
+
 FILE='inp.txt'
 def read():
     grid = []
@@ -87,7 +89,6 @@ def solve2Brute(grid,GuardPos):
 
 
 def solve2Optimised(grid,GuardPos):
-     # this won't work . Why ? think of a case when you are putting the block on a path , but the path in reverse direction is already visited .
     n = len(grid)
     m = len(grid[0])
     dirs = [[-1, 0], [0, 1], [1, 0], [0, -1]]  # top right down left
@@ -140,15 +141,17 @@ def solve2Optimised(grid,GuardPos):
         locks.add((lx,ly,dir))
         dir = (dir+1)%4
         while True:
+            oCX = cX
+            oCY = cY
             cX = hol[dir][cX][cY][0]
             cY = hol[dir][cX][cY][1]
-            if dir==0 and (cX < lx or cX==-1) and cY == ly:
+            if dir == 0 and (cX < lx or cX == -1) and oCX > lx and cY == ly:
                 cX = lx
-            if dir==1 and cX == lx and ( cY > ly or cY == -1 ):
+            if dir == 1 and cX == lx and oCY < ly and (cY > ly or cY == -1):
                 cY = ly
-            if dir==2 and (cX > lx or cX==-1) and cY == ly:
+            if dir == 2 and (cX > lx or cX == -1) and oCX < lx and cY == ly:
                 cX = lx
-            if dir==3 and cX == lx and ( cY < ly or cY == -1 ):
+            if dir == 3 and cX == lx and oCY > ly and (cY < ly or cY == -1):
                 cY = ly
             if(cX == -1 or cY == -1):
                 return False
@@ -165,7 +168,8 @@ def solve2Optimised(grid,GuardPos):
 
     x = GuardPos[0] + dirs[dir][0]
     y = GuardPos[1] + dirs[dir][1]
-
+    visSet = set()
+    visSet.add((GuardPos[0],GuardPos[1]))
     while (inLimit(x, y)):
         if (grid[x][y] == '#'):
             x -= dirs[dir][0]
@@ -174,19 +178,36 @@ def solve2Optimised(grid,GuardPos):
         else:
             olX = x - dirs[dir][0]
             olY = y - dirs[dir][1]
-            if( (x!=GuardPos[0] or y!=GuardPos[1]) and isLock(x,y,olX,olY,dir)):
+            if( (x,y) not in visSet and isLock(x,y,olX,olY,dir)):
                 ans += 1
                 set2.add((x,y))
+            visSet.add((x,y))
 
         x += dirs[dir][0]
         y += dirs[dir][1]
     return ans
 
 grid,guaardPos = read()
-#print(solve1(grid,guaardPos))
-print(solve2Brute(grid,guaardPos))
-print("###")
-print(solve2Optimised(grid,guaardPos))
+print(solve1(grid,guaardPos))
 
-print(set1-set2)
-print(set2-set1)
+print("solving part 2 - bruteforce : ")
+st = time.time()
+print(solve2Brute(grid,guaardPos))
+print("time taken in seconds :" + str(time.time()-st))
+
+print("solving part 2 - optimised : ")
+st = time.time()
+print(solve2Optimised(grid,guaardPos))
+print("time taken in seconds :" + str(time.time()-st))
+
+"""
+
+solving part 2 - bruteforce : 
+2188
+time taken in seconds :26.629550218582153
+
+solving part 2 - optimised : 
+2188
+time taken in seconds :0.10183882713317871
+
+"""
