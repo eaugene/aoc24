@@ -1,2 +1,4 @@
-# aoc24
-Advent of Code 2024
+# AOC 2024
+Advent of Code 2024 repository for all my solutions. I'll try to keep this repository relatively up-to-date and make public at the day of Christmas 🎅 🎄 !
+
+Unless otherwise stated, all the code here is basically the raw stuff I used to solve problems. That means the quality is... questionable at best. When I’m racing against the clock to free up time for other duties of the day, my approach is more “just get it done” than “Clean Code” . You’ll be able to find one-letter variable names, recycled variables, terrifying one-liners, and other coding bad practices that would make professional-me disapprove my code. But hey, I can write good code (at least, I like to think so—check out my other OSS contributions if you need proof).
