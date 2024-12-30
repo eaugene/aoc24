@@ -19,8 +19,8 @@ def timeit(func):
                 start_time = time.time()  # Record the start time
                 result = func(*args, **kwargs)  # Call the original function
                 end_time = time.time()  # Record the end time
-                runtime = end_time - start_time
-                print(f"Function '{func.__name__}' executed in {runtime:.4f} seconds")
+                runtime = (end_time - start_time) * 1000  # Convert to milliseconds
+                print(f"Function '{func.__name__}' executed in {runtime:.4f} ms")
                 return result
             else:
                 # Call the function normally if it's not first level
