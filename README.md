@@ -4,7 +4,7 @@ Repository for all my solutions 🎅 🎄 !
 Unless otherwise stated, all the code here is basically the raw stuff I used to solve problems . That means the code quality is questionable 😁.
 All codes are in Python and no multi-threading or parallel processing is used.
 
-Stars : 50/50 🌟 
+Stars : 50/50  🌟 
 ![My 50 Stars](50Stars.gif?raw=true)
 
 
